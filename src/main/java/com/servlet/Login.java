@@ -20,6 +20,7 @@ import com.service.Service;
  */
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final int PAGE_SIZE = 3;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -53,7 +54,7 @@ public class Login extends HttpServlet {
 			request.setAttribute("user", user);
 			session.setAttribute("user", user);
 			try {
-				List<Movie> movieslist = sv.findMoviesByGenere("Drama", 1);
+				List<Movie> movieslist = sv.findMoviesByGenere("Drama", 1, PAGE_SIZE);
 				request.setAttribute("movieslist",movieslist);
                 Cookie cookie = new Cookie("JSESSIONID",session.getId());
                 cookie.setMaxAge(60*30);
